@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-beat-count',
@@ -48,6 +48,7 @@ export class BeatCountComponent implements OnInit {
     this.simplify = false;
   }
 
+  @HostListener('document:keypress')
   clicked() {
     this.listOfTimestamps.push(new Date().getTime());
     this.updateRelativeTimestamps();
@@ -104,6 +105,7 @@ export class BeatCountComponent implements OnInit {
     }
   }
 
+  @HostListener('document:keydown.escape')
   reset() {
     this.ngOnInit();
   }
